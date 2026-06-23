@@ -1,0 +1,7 @@
+FROM alpine:3.22
+
+RUN adduser -D -H -u 10001 controller
+COPY cloud_native_entry_task/controllers/bin/dbcp-controller /usr/local/bin/dbcp-controller
+
+USER 10001
+ENTRYPOINT ["/usr/local/bin/dbcp-controller"]

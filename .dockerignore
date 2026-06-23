@@ -1,0 +1,5 @@
+/.gocache
+/.git
+/bin
+/runtime
+.DS_Store

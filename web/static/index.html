@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Go User Management</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="app">
+    <section class="panel" id="login-panel">
+      <h1>User Login</h1>
+      <form id="login-form">
+        <label>
+          Username
+          <input name="username" autocomplete="username" required placeholder="user00000001">
+        </label>
+        <label>
+          Password
+          <input name="password" type="password" autocomplete="current-password" required placeholder="Password123!">
+        </label>
+        <button type="submit">Login</button>
+      </form>
+    </section>
+
+    <section class="panel hidden" id="profile-panel">
+      <div class="profile-head">
+        <img id="avatar" alt="Profile picture" src="/placeholder.svg">
+        <div>
+          <h1 id="nickname">Nickname</h1>
+          <p id="username">username</p>
+        </div>
+      </div>
+
+      <form id="nickname-form" class="inline-form">
+        <label>
+          Nickname
+          <input name="nickname" required maxlength="191">
+        </label>
+        <button type="submit">Save</button>
+      </form>
+
+      <form id="picture-form" class="inline-form">
+        <label>
+          Profile picture
+          <input name="picture" type="file" accept="image/png,image/jpeg,image/webp,image/gif" required>
+        </label>
+        <button type="submit">Upload</button>
+      </form>
+
+      <button id="logout" type="button" class="secondary">Logout</button>
+    </section>
+
+    <p id="message" role="status"></p>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>
+

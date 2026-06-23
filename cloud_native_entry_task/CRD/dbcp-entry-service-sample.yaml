@@ -1,0 +1,21 @@
+apiVersion: dbcp.shopee.io/v1alpha1
+kind: DbcpEntryService
+metadata:
+  name: dbcp-entry-service
+  namespace: default
+spec:
+  config:
+    targetDB: "go_entry_app:password@tcp(localhostip:3306)/go_entry_user_mgmt?charset=utf8mb4&parseTime=true&loc=Local"
+    targetRedis: "localhostip:6379"
+    serviceExportPort: 8080
+  service:
+    image: "dbcp-entry-service:local"
+    replicas: 2
+    resources:
+      requests:
+        cpu: "100m"
+        memory: "128Mi"
+      limits:
+        cpu: "500m"
+        memory: "512Mi"
+

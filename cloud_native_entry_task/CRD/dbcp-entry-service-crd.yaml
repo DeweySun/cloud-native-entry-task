@@ -1,0 +1,89 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: dbcp-entry-services.dbcp.shopee.io
+spec:
+  group: dbcp.shopee.io
+  scope: Namespaced
+  names:
+    plural: dbcp-entry-services
+    singular: dbcp-entry-service
+    kind: DbcpEntryService
+    shortNames:
+      - dbcpes
+  versions:
+    - name: v1alpha1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              required:
+                - config
+                - service
+              properties:
+                config:
+                  type: object
+                  required:
+                    - targetDB
+                    - targetRedis
+                    - serviceExportPort
+                  properties:
+                    targetDB:
+                      type: string
+                      description: MySQL DSN used by the TCP backend.
+                    targetRedis:
+                      type: string
+                      description: Redis host:port for session and profile picture cache.
+                    serviceExportPort:
+                      type: integer
+                      minimum: 1
+                      maximum: 65535
+                      description: Public service port, usually 8080.
+                service:
+                  type: object
+                  required:
+                    - image
+                    - replicas
+                  properties:
+                    image:
+                      type: string
+                      description: Container image containing tcpd, httpd, Nginx, and static files.
+                    replicas:
+                      type: integer
+                      minimum: 1
+                      description: Number of application replicas.
+                    resources:
+                      type: object
+                      properties:
+                        requests:
+                          type: object
+                          properties:
+                            cpu:
+                              type: string
+                            memory:
+                              type: string
+                        limits:
+                          type: object
+                          properties:
+                            cpu:
+                              type: string
+                            memory:
+                              type: string
+      additionalPrinterColumns:
+        - name: Image
+          type: string
+          jsonPath: .spec.service.image
+        - name: Replicas
+          type: integer
+          jsonPath: .spec.service.replicas
+        - name: Port
+          type: integer
+          jsonPath: .spec.config.serviceExportPort
+        - name: Redis
+          type: string
+          jsonPath: .spec.config.targetRedis
+

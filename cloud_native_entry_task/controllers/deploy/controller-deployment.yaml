@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dbcp-entry-controller
+  namespace: default
+  labels:
+    app.kubernetes.io/name: dbcp-entry-controller
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: dbcp-entry-controller
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: dbcp-entry-controller
+    spec:
+      serviceAccountName: dbcp-entry-controller
+      containers:
+        - name: controller
+          image: dbcp-entry-controller:local
+          imagePullPolicy: IfNotPresent
+          args:
+            - --resync=3s
+          resources:
+            requests:
+              cpu: "50m"
+              memory: "64Mi"
+            limits:
+              cpu: "200m"
+              memory: "256Mi"

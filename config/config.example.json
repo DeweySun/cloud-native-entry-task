@@ -1,0 +1,53 @@
+{
+  "dbcp": {
+    "target_db": "go_entry_app:<password>@tcp(mysql.example:3306)/go_entry_user_mgmt?charset=utf8mb4&parseTime=true&loc=Local",
+    "target_redis": "redis.example:6379",
+    "service_export_port": 8080
+  },
+  "tcp": {
+    "addr": "127.0.0.1:9000",
+    "read_timeout": "5s",
+    "write_timeout": "5s",
+    "max_frame_bytes": 8388608,
+    "worker_count": 64,
+    "queue_size": 2048
+  },
+  "http": {
+    "addr": "127.0.0.1:8081",
+    "tcp_addr": "127.0.0.1:9000",
+    "request_timeout": "5s",
+    "max_body_bytes": 4194304,
+    "cookie_name": "session_token",
+    "profile_picture_base_url": "/api/me/profile-picture"
+  },
+  "database": {
+    "dsn": "go_entry_app:<password>@tcp(127.0.0.1:3306)/go_entry_user_mgmt?charset=utf8mb4&parseTime=true&loc=Local",
+    "max_open_conns": 128,
+    "max_idle_conns": 32,
+    "conn_max_lifetime": "5m"
+  },
+  "redis": {
+    "addr": "",
+    "password": "",
+    "db": 0,
+    "key_prefix": "go-entry-task",
+    "dial_timeout": "2s",
+    "io_timeout": "2s"
+  },
+  "security": {
+    "token_secret": "<64-hex-chars>",
+    "password_iterations": 210000,
+    "session_ttl": "24h"
+  },
+  "upload": {
+    "profile_picture_dir": "runtime/profile-pictures",
+    "max_bytes": 2097152,
+    "allowed_mime_types": ["image/jpeg", "image/png", "image/webp", "image/gif"]
+  },
+  "seed": {
+    "count": 10000000,
+    "batch_size": 1000,
+    "concurrency": 4,
+    "default_password": "Password123!"
+  }
+}

@@ -1,0 +1,38 @@
+.cache/
+.gocache/
+.gopath/
+
+bin/
+cloud_native_entry_task/controllers/bin/
+operator/bin/
+runtime/
+
+# local config file
+config/config.json
+config/config.local.json
+*.local.json
+
+# MacOS redundance
+.DS_Store
+
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary, built with `go test -c`
+*.test
+
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.out
+
+# Go workspace file
+go.work
+
+# editor and IDE paraphernalia
+.idea
+.vscode
+*.swp
+*.swo
+*~

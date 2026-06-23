@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dbcp-entry-service-config
+  namespace: default
+  labels:
+    app.kubernetes.io/name: dbcp-entry-service
+data:
+  APP_TCP_ADDR: "127.0.0.1:9000"
+  APP_HTTP_ADDR: "127.0.0.1:8081"
+  APP_HTTP_TCP_ADDR: "127.0.0.1:9000"
+  APP_PROFILE_PICTURE_DIR: "/app/runtime/profile-pictures"
+  APP_PROFILE_PICTURE_BASE_URL: "/api/me/profile-picture"
+  APP_REDIS_KEY_PREFIX: "go-entry-task"
+  APP_DB_MAX_OPEN_CONNS: "128"
+  APP_DB_MAX_IDLE_CONNS: "32"
+  APP_TCP_WORKERS: "64"
+  APP_TCP_QUEUE_SIZE: "2048"
+  DBCP_SERVICE_EXPORT_PORT: "8080"
+

@@ -1,0 +1,29 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: dbcp-entry-service-svc-verify
+  namespace: default
+  labels:
+    app.kubernetes.io/name: dbcp-entry-service
+spec:
+  backoffLimit: 2
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: dbcp-entry-service-verify
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: verify-svc-domain
+          image: curlimages/curl:8.11.1
+          command:
+            - sh
+            - -c
+            - |
+              set -eu
+              URL="http://dbcp-entry-service.default.svc.cluster.local:8080/"
+              echo "Checking ${URL}"
+              curl -fsSI "${URL}"
+              curl -fsS "${URL}" | grep -q "User Login"
+              echo "Service DNS is reachable inside pod."
+

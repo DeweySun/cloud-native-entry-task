@@ -1,0 +1,9 @@
+apiVersion: dbcp.example.com/v1alpha1
+kind: UserManagementService
+metadata:
+  name: user-management-demo
+spec:
+  targetDB: "go_entry_app:<password>@tcp(mysql.example:3306)/go_entry_user_mgmt?charset=utf8mb4&parseTime=true&loc=Local"
+  targetRedis: "redis.example:6379"
+  serviceExportPort: 8080
+

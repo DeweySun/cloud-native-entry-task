@@ -1,0 +1,4 @@
+## Append samples of your project ##
+resources:
+- dbcp_v1alpha1_dbcpentryservice.yaml
+# +kubebuilder:scaffold:manifestskustomizesamples
