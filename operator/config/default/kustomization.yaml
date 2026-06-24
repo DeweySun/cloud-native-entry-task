@@ -33,6 +33,12 @@ resources:
 # be able to communicate with the Webhook Server.
 #- ../network-policy
 
+# Local dbcp-operator image
+images:
+- name: controller
+  newName: dbcp-entry-operator
+  newTag: local
+
 # Uncomment the patches line if you enable Metrics
 patches:
 # [METRICS] The following patch will enable the metrics endpoint using HTTPS and the port :8443.
