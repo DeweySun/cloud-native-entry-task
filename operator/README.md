@@ -19,6 +19,20 @@
 make docker-build docker-push IMG=<some-registry>/operator:tag
 ```
 
+**NOTE:** The deploy.sh and clean.sh scripts assume you have a running kind cluster (default name kind) and that the required Docker images (`dbcp-entry-operator:local` and `dbcp-entry-service:local`) are already built locally.
+If the scripts fail to load images or connect to the cluster, verify your kubectl context and that the kind cluster is accessible.
+For custom cluster names or image tags, modify the variables at the top of each script accordingly.
+
+**Deploy the Operator and application:**
+```sh
+./scrips/deploy.sh
+```
+
+**Clean up all deployed resources (keep images):**
+```sh
+./scrips/clean.sh
+```
+
 **NOTE:** This image ought to be published in the personal registry you specified.
 And it is required to have access to pull the image from the working environment.
 Make sure you have the proper permission to the registry if the above commands don’t work.
