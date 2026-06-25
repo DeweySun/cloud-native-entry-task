@@ -2,11 +2,11 @@ apiVersion: dbcp.shopee.io/v1alpha1
 kind: DbcpEntryService
 metadata:
   name: dbcp-entry-service
-  namespace: default
+  namespace: entry-system
 spec:
   config:
-    targetDB: "go_entry_app:password@tcp(localhostip:3306)/go_entry_user_mgmt?charset=utf8mb4&parseTime=true&loc=Local"
-    targetRedis: "localhostip:6379"
+    targetDB: "go_entry_app:123456@tcp(10.31.4.27:3306)/go_entry_user_mgmt?charset=utf8mb4&parseTime=true&loc=Local"
+    targetRedis: "10.31.4.27:6379"
     serviceExportPort: 8080
   service:
     image: "dbcp-entry-service:local"

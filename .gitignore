@@ -1,38 +1,45 @@
+# === macOS 系统垃圾 ===
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# === Go 编译缓存 ===
 .cache/
 .gocache/
 .gopath/
-
 bin/
-cloud_native_entry_task/controllers/bin/
-operator/bin/
-runtime/
+vendor/
+*.exe
+*.test
+*.out
+*.prof
+coverage.html
 
-# local config file
+# === 本地敏感配置 ===
 config/config.json
 config/config.local.json
+deploy/
 *.local.json
+*.secret.yaml
+*.secret.yml
+operator/scripts/deploy_remote.sh
+operator/scripts/clean_remote.sh
 
-# MacOS redundance
-.DS_Store
 
-*.exe
-*.exe~
-*.dll
-*.so
-*.dylib
+# === 运行时临时文件 ===
+runtime/
+logs/
+*.log
+*.pid
 
-# Test binary, built with `go test -c`
-*.test
-
-# Output of the go coverage tool, specifically when used with LiteIDE
-*.out
-
-# Go workspace file
-go.work
-
-# editor and IDE paraphernalia
-.idea
-.vscode
+# === 编辑器临时文件 ===
 *.swp
 *.swo
 *~
+.idea/
+.vscode/
+*.iml
+
+# === 其他二进制文件 ===
+cloud_native_entry_task/controllers/bin/
+operator/bin/
