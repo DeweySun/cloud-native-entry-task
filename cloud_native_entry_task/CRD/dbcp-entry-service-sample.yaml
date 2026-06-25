@@ -5,8 +5,8 @@ metadata:
   namespace: entry-system
 spec:
   config:
-    targetDB: "go_entry_app:123456@tcp(10.31.4.27:3306)/go_entry_user_mgmt?charset=utf8mb4&parseTime=true&loc=Local"
-    targetRedis: "10.31.4.27:6379"
+    targetDB: "go_entry_app:<password>@tcp(mysql.example:3306)/go_entry_user_mgmt?charset=utf8mb4&parseTime=true&loc=Local"
+    targetRedis: "redis.example:6379"
     serviceExportPort: 8080
   service:
     image: "dbcp-entry-service:local"
