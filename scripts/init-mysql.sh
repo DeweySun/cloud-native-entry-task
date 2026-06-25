@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ROOT_PASSWORD="${MYSQL_ROOT_PASSWORD:-123456}"
+ROOT_PASSWORD="${MYSQL_ROOT_PASSWORD:-change-me}"
 APP_DB_NAME="${APP_DB_NAME:-go_entry_user_mgmt}"
 APP_DB_USER="${APP_DB_USER:-go_entry_app}"
-APP_DB_PASSWORD="${APP_DB_PASSWORD:-699432ca2d1a5729950965a32465e4028126de27f237142a}"
+APP_DB_PASSWORD="${APP_DB_PASSWORD:-change-me}"
 
 mysql --protocol=TCP -h127.0.0.1 -P3306 -uroot "-p${ROOT_PASSWORD}" <<SQL
 CREATE DATABASE IF NOT EXISTS ${APP_DB_NAME}
@@ -32,4 +32,3 @@ FLUSH PRIVILEGES;
 SQL
 
 echo "MySQL database and application user are ready."
-
